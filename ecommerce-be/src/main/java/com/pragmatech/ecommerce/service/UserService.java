@@ -73,7 +73,7 @@ public class UserService {
 			String token = jwtUtils.generateJwtToken(request.getEmail(), request.getEmail());
 			response.put("user", user);
 			response.put("token", token);
-		} catch (AuthenticationException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception("Incorrect password or email");
 		}
