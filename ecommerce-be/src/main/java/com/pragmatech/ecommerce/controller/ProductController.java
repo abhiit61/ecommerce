@@ -17,6 +17,7 @@ import com.pragmatech.ecommerce.dto.FullProductResponse;
 import com.pragmatech.ecommerce.dto.HeaderResponse;
 import com.pragmatech.ecommerce.dto.ProductResponse;
 import com.pragmatech.ecommerce.dto.ProductSearchRequest;
+import com.pragmatech.ecommerce.dto.SearchTypeRequest;
 import com.pragmatech.ecommerce.service.ProductService;
 
 @RestController
@@ -28,7 +29,7 @@ public class ProductController {
 
 	@PostMapping("/search")
 	public ResponseEntity<List<ProductResponse>> findProductsByFilterParams(@RequestBody ProductSearchRequest filter,
-			@PageableDefault(size = 15) Pageable pageable) {
+			@PageableDefault(size = 8) Pageable pageable) {
 		HeaderResponse<ProductResponse> response = productService.findProductsByFilterParams(filter, pageable);
 		return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
 	}
@@ -38,4 +39,12 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductById(productId));
     }
 
+	@PostMapping("/search/text")
+    public ResponseEntity<List<ProductResponse>> findByInputText(@RequestBody SearchTypeRequest searchType,
+                                                                 @PageableDefault(size = 8) Pageable pageable) {
+		HeaderResponse<ProductResponse> response = productService.findByInputText(searchType.getSearchType(), 
+        		searchType.getText(), searchType.getGender(), pageable);
+        return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
+    }
+	
 }

@@ -24,7 +24,7 @@ const CarouselImageSlider: FC = (): ReactElement => {
                 <div key={item.id} className={"carousel-item-wrapper"}>
                     
                     <Link to={{ pathname: MENU, state: { id: item.id } }} className={"carousel-link"} />
-                    <img style={{width:910,margin:"0 auto"}} src={item.url} alt={item.name} />
+                    <img style={{width:"70%",margin:"0 auto"}} src={item.url} alt={item.name} />
                 </div>
             ))}
         </Carousel>

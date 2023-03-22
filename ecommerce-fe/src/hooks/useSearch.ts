@@ -26,7 +26,8 @@ export const useSearch = (): UseSearch => {
 
     const onSearch = (data: { searchValue: string }): void => {
         setSearchValue(data.searchValue);
-        dispatch(fetchPerfumesByInputText({ searchType: searchTypeValue, text: data.searchValue, currentPage: 0 }));
+        dispatch(fetchPerfumesByInputText({ searchType: searchTypeValue, text: data.searchValue, currentPage: 0
+        , gender: [] }));
     };
 
     const resetFields = (): void => {

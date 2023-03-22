@@ -36,6 +36,7 @@ export interface PerfumesSearchRequest {
     searchType: SearchPerfume;
     text: string;
     currentPage: number;
+    gender: string[]
 }
 
 export interface PerfumeErrors {

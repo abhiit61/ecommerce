@@ -52,7 +52,8 @@ const PerfumeList: FC = (): ReactElement => {
     const changePagination = (page: number, pageSize: number): void => {
         if (searchValue) {
             dispatch(
-                fetchPerfumesByInputText({ searchType: searchTypeValue, text: searchValue, currentPage: page - 1 })
+                fetchPerfumesByInputText({ searchType: searchTypeValue, text: searchValue, currentPage: page - 1
+                , gender: [] })
             );
         } else {
             dispatch(fetchPerfumes(page - 1));
